@@ -61,6 +61,18 @@ void AAuraEffectActor::ApplyEffectToTarget(AActor* TargetActor, TSubclassOf<UGam
 	}
 }
 
+//For the course quest: multiple effects
+void AAuraEffectActor::ApplyDurationEffectsToTarget(AActor* TargetActor)
+{
+	for (const TSubclassOf<UGameplayEffect>& EffectClass : DurationGameplayEffectClasses)
+	{
+		if (EffectClass)
+		{
+			ApplyEffectToTarget(TargetActor, EffectClass);
+		}
+	}
+}
+
 void AAuraEffectActor::OnOverlap(AActor* TargetActor)
 {
 	if (InstantEffectApplicationPolicy == EEffectApplicationPolicy::ApplyOnOverlap)
@@ -74,6 +86,12 @@ void AAuraEffectActor::OnOverlap(AActor* TargetActor)
 	if (InfiniteEffectApplicationPolicy == EEffectApplicationPolicy::ApplyOnOverlap)
 	{
 		ApplyEffectToTarget(TargetActor, InfiniteGameplayEffectClass);
+	}
+
+	//For the course quest: multiple effects
+	if (DurationEffectApplicationPolicy == EEffectApplicationPolicy::ApplyOnOverlap)
+	{
+		ApplyDurationEffectsToTarget(TargetActor);
 	}
 }
 
@@ -97,9 +115,9 @@ void AAuraEffectActor::OnEndOverlap(AActor* TargetActor)
 		if (!IsValid(TargetASC)) return;
 
 		TArray<FActiveGameplayEffectHandle> HandlesToRemove;
-		
+
 		//for (TPair<FActiveGameplayEffectHandle, UAbilitySystemComponent*>:ActiveEffectHandles)
-		for (auto HandlePair:ActiveEffectHandles)
+		for (auto HandlePair : ActiveEffectHandles)
 		{
 			if (TargetASC == HandlePair.Value)
 			{
@@ -108,9 +126,15 @@ void AAuraEffectActor::OnEndOverlap(AActor* TargetActor)
 			}
 		}
 		//for (FActiveGameplayEffectHandle& Handle:HandlesToRemove)
-		for (auto& Handle:HandlesToRemove)
+		for (auto& Handle : HandlesToRemove)
 		{
 			ActiveEffectHandles.FindAndRemoveChecked(Handle);
 		}
+	}
+
+	//For the course quest: multiple effects
+	if (DurationEffectApplicationPolicy == EEffectApplicationPolicy::ApplyOnEndOverlap)
+	{
+		ApplyDurationEffectsToTarget(TargetActor);
 	}
 }
