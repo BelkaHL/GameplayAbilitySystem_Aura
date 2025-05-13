@@ -18,6 +18,7 @@ struct FAuraInputAction
 	UPROPERTY(EditDefaultsOnly)
 	FGameplayTag InputTag = FGameplayTag();
 };
+
 /**
  * 
  */
@@ -27,9 +28,8 @@ class AURA_API UAuraInputConfig : public UDataAsset
 	GENERATED_BODY()
 
 public:
-
 	const UInputAction* FindAbilityInputActionForTag(const FGameplayTag& InputTag, bool bLogNotFound = false) const;
-	
+
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	TArray<FAuraInputAction> AbilityInputActions;
 };

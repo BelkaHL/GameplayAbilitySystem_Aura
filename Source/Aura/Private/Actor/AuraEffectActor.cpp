@@ -40,15 +40,6 @@ void AAuraEffectActor::ApplyEffectToTarget(AActor* TargetActor, TSubclassOf<UGam
 		UE_LOG(LogTemp, Warning, TEXT("Invalid EffectSpecHandle for effect %s"), *GetNameSafe(GameplayEffectClass));
 	}
 
-	// if (EffectSpecHandle.IsValid() && EffectSpecHandle.Data.IsValid())
-	// {
-	// 	TargetASC->ApplyGameplayEffectSpecToSelf(*EffectSpecHandle.Data.Get());
-	// }
-	// else
-	// {
-	// 	UE_LOG(LogTemp, Warning, TEXT("EffectSpecHandle is invalid or missing Data for %s"), *GetNameSafe(GameplayEffectClass));
-	// }
-
 	// Chance to apply effect
 	//EffectSpecHandle.Data->ChanceToApplyToTarget = 1.0f;
 	//TargetASC->ApplyGameplayEffectSpecToTarget(*EffectSpecHandle.Data.Get(), TargetASC);

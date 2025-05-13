@@ -23,7 +23,7 @@ public:
 	// Sets default values for this character's properties
 	AAuraCharacterBase();
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
-	UAttributeSet* GetAttributeSet() const {return AttributeSet; }
+	UAttributeSet* GetAttributeSet() const { return AttributeSet; }
 
 protected:
 	// Called when the game starts or when spawned
@@ -51,11 +51,9 @@ protected:
 
 	void ApplyEffectToSelf(TSubclassOf<UGameplayEffect> GameplayEffectClass, float Level) const;
 	void InitializeDefaultAttributes() const;
-
 	void AddCharacterAbilities();
 
 private:
-
 	UPROPERTY(EditAnywhere, Category = "Attributes")
 	TArray<TSubclassOf<UGameplayAbility>> StartupAbilities;
 };

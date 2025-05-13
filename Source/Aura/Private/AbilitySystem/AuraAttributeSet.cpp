@@ -64,9 +64,7 @@ void UAuraAttributeSet::PreAttributeChange(const FGameplayAttribute& Attribute, 
 	if (Attribute == GetHealthAttribute())
 	{
 		NewValue = FMath::Clamp(NewValue, 0.0f, GetMaxHealth());
-		//UE_LOG(LogTemp, Warning, TEXT("Health: %f"), NewValue);
 	}
-
 	if (Attribute == GetManaAttribute())
 	{
 		NewValue = FMath::Clamp(NewValue, 0.0f, GetMaxMana());
@@ -76,7 +74,7 @@ void UAuraAttributeSet::PreAttributeChange(const FGameplayAttribute& Attribute, 
 void UAuraAttributeSet::SetEffectProperties(const FGameplayEffectModCallbackData& Data, FEffectProperties& Props) const
 {
 	//Source = causer of the effect, Target = target of the effect (owner of this AS(AttributeSet))
-	
+
 	Props.EffectContextHandle = Data.EffectSpec.GetContext();
 	Props.SourceASC = Props.EffectContextHandle.GetOriginalInstigatorAbilitySystemComponent();
 
@@ -107,25 +105,17 @@ void UAuraAttributeSet::SetEffectProperties(const FGameplayEffectModCallbackData
 		Props.TargetCharacter = Cast<ACharacter>(Props.TargetAvatarActor);
 		Props.TargetASC = UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent(Props.TargetAvatarActor);
 	}
-	
 }
 
 void UAuraAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data)
 {
 	Super::PostGameplayEffectExecute(Data);
 
-	// if (Data.EvaluatedData.Attribute == GetHealthAttribute())
-	// {
-	// 	UE_LOG(LogTemp, Warning, TEXT("Health from GetHealth(): %f"), GetHealth());
-	// 	UE_LOG(LogTemp, Warning, TEXT("Magnitude: %f"), Data.EvaluatedData.Magnitude);
-	// }
-
 	FEffectProperties Props;
 	SetEffectProperties(Data, Props);
 
 	if (Data.EvaluatedData.Attribute == GetHealthAttribute())
 	{
-		//GEngine->AddOnScreenDebugMessage(1, 3.f, FColor::Red, FString::Printf(TEXT("Health: %f"), GetHealth()));
 		SetHealth(FMath::Clamp(GetHealth(), 0.0f, GetMaxHealth()));
 	}
 	if (Data.EvaluatedData.Attribute == GetManaAttribute())
