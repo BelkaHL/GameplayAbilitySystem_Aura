@@ -3,7 +3,7 @@
 
 #include "AbilitySystem/Data/CharacterClassInfo.h"
 
-FCharacterClassDefaultInfo UCharacterClassInfo::GetCharacterClassDefaultInfo(ECharacterClass CharacterClass)
+FCharacterClassDefaultInfo UCharacterClassInfo::GetClassDefaultInfo(ECharacterClass CharacterClass)
 {
 	return CharacterClassInformation.FindChecked(CharacterClass);
 }
