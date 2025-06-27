@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-//#include "GameplayEffectTypes.h"
+#include "GameplayEffectTypes.h"
 #include "Data/CharacterClassInfo.h"
 #include "Interaction/CombatInterface.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
