@@ -25,7 +25,7 @@ AAuraEnemy::AAuraEnemy()
 	bUseControllerRotationPitch = false;
 	bUseControllerRotationRoll = false;
 	bUseControllerRotationYaw = false;
-	GetCharacterMovement()->bOrientRotationToMovement = true;
+	//GetCharacterMovement()->bOrientRotationToMovement = true;
 	GetCharacterMovement()->bUseControllerDesiredRotation = true;
 
 	AttributeSet = CreateDefaultSubobject<UAuraAttributeSet>("AttributeSet");
