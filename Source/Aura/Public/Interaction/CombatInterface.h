@@ -4,8 +4,12 @@
 
 #include "CoreMinimal.h"
 #include "GameplayTagContainer.h"
+//#include "NiagaraSystem.h"
 #include "UObject/Interface.h"
 #include "CombatInterface.generated.h"
+
+class UAnimInstance;
+class UNiagaraSystem;
 
 USTRUCT(BlueprintType)
 struct FTaggedMontage
@@ -20,8 +24,13 @@ struct FTaggedMontage
 
 	FTaggedMontage()
 		: Montage(nullptr)
-		, MontageTag()
-	{}
+		  , MontageTag()
+		  , ImpactSound(nullptr)
+	{
+	}
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	USoundBase* ImpactSound;
 };
 
 // This class does not need to be modified.
@@ -30,7 +39,6 @@ class UCombatInterface : public UInterface
 {
 	GENERATED_BODY()
 };
-class UAnimInstance;
 /**
  * 
  */
@@ -61,4 +69,7 @@ public:
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
 	TArray<FTaggedMontage> GetAttackMontages();
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	UNiagaraSystem* GetBloodEvent();
 };
