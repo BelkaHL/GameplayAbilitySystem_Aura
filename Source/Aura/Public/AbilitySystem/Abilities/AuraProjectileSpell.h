@@ -4,9 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "AbilitySystem/Abilities/AuraDamageGameplayAbility.h"
+#include "Actor/AuraProjectile.h"
+//#include "GameFramework/Actor.h"
+#include "GameFramework/Pawn.h"
+
 #include "AuraProjectileSpell.generated.h"
 
-class AAuraProjectile;
+//class AAuraProjectile;
 class UGameplayEffect;
 
 /**

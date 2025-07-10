@@ -6,6 +6,7 @@
 #include "CoreMinimal.h"
 #include "GameplayEffectTypes.h"
 #include "GameFramework/Actor.h"
+#include "Components/AudioComponent.h"
 #include "AuraProjectile.generated.h"
 
 class UNiagaraSystem;
