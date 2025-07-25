@@ -1,16 +1,46 @@
-Binaries
-DerivedDataCache
-Intermediate
-Saved
-Build
+# Unreal Engine
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+Build/
 
-.vscode
-.vs
+# IDE
+.vscode/
+.vs/
+.idea/
 *.VC.db
 *.opensdf
 *.opendb
 *.sdf
 *.sln
 *.suo
-*.xcodeproj
-*.xcworkspace
+*.xcodeproj/
+*.xcworkspace/
+**/xcuserdata/
+*.xcuserstate
+
+# macOS system files
+.DS_Store
+Icon\r
+._*
+.Spotlight-V100/
+.Trashes/
+.fseventsd/
+
+# Logs and temp files
+*.log
+*.tmp
+*.temp
+*.pidb
+*.user
+*.userprefs
+*.ncb
+*.tlog
+
+# Build artifacts
+*.obj
+*.pch
+
+# Other
+*.xcscheme
